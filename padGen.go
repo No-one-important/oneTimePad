@@ -11,6 +11,6 @@ func main() {
 	length, _ := strconv.Atoi(os.Args[1])
 
 	for i := 0; i < length; i++ {
-		fmt.Printf("%v\n", rand.Intn(26))
+		fmt.Printf("%v\n", rand.Intn(255))
 	}
 }

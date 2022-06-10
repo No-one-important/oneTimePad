@@ -10,25 +10,18 @@ import (
 )
 
 func encrypt(text string, pad []int) string {
-	r := []rune(text)
-	var output []rune
+	var output []byte
 
-	for i, j := range r {
-		output = append(output, caesar(j, pad[i]*-1))
+	for i := 0; i < len(text); i++ {
+		output = append(output, caesar(text[i], pad[i]*-1))
 	}
 	return string(output)
 }
 
-func caesar(r rune, shift int) rune {
+func caesar(r byte, shift int) byte {
 	// Shift character by specified number of places.
 	// ... If beyond range, shift backward or forward.
-	s := int(r) + shift
-	if s > 'z' {
-		return rune(s - 26)
-	} else if s < 'a' {
-		return rune(s + 26)
-	}
-	return rune(s)
+	return r + byte(shift)
 }
 
 func main() {
